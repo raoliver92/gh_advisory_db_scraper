@@ -70,7 +70,7 @@ class AdvisoryScraper:
             params['severity'] = severity
         page_count = 0
         next_url = None
-
+        logger.info(f"Fetching advisories")
         while True:
             page_count += 1
             if max_pages and page_count > max_pages:
@@ -101,7 +101,6 @@ class AdvisoryScraper:
                 all_advs.extend(data)
 
             if not next_url:
-                logger.info(f"No next page. Fetched {page_count} pages.")
                 break
             time.sleep(delay)
         logger.info(f"Total advisories fetched: {len(all_advs)}")

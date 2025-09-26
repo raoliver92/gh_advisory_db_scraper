@@ -119,6 +119,6 @@ def zip_files(files, filename):
         filename (str): filename to save the zip file
     """
     logger.info(f"Zipping {len(files)} files into {filename}")
-    with zipfile.ZipFile(filename, 'w') as zipf:
+    with zipfile.ZipFile(filename, 'w', zipfile.ZIP_DEFLATED) as zipf:
         for file in files:
             zipf.write(file)
