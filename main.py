@@ -21,7 +21,7 @@ def main():
         if cisa_scraper.check_if_known_exploited_vulnerabilities(cisa_advisories, advisory['cve_id']):
             advisory['kev'] = '1'
         else:
-            advisory['kev'] = ''
+            advisory['kev'] = '0'
     
     severities = ['low', 'medium', 'high', 'critical']
     low = []

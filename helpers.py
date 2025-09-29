@@ -73,15 +73,15 @@ def create_csv(advisories, filename):
         filename (str): filename to save the csv file
     """
     header = [
-        "CVE", # cve_id
-        "Summary", # summary
-        "Severity", # severity
-        "Source Location", # source_code_location
-        "Published", # nvd_published_at
-        "References", # references
-        "CVSS", #cvss
-        "EPSS", # epss
-        "KEV", # kev
+        "CVE",
+        "Summary",
+        "Severity",
+        "Source Location",
+        "Published",
+        "References",
+        "CVSS",
+        "EPSS",
+        "KEV",
     ]
     fieldnames = [
         "cve_id",
@@ -122,3 +122,15 @@ def zip_files(files, filename):
     with zipfile.ZipFile(filename, 'w', zipfile.ZIP_DEFLATED) as zipf:
         for file in files:
             zipf.write(file)
+            
+            
+def unzip_file(filename):
+    """Unzip a file
+
+    Args:
+        filename (str): filename to unzip
+    """
+    logger.info(f"Unzipping {filename}")
+    with zipfile.ZipFile(filename, 'r') as zipf:
+        zipf.extractall()
+    logger.info(f"Unzipped {filename}")
